@@ -8,17 +8,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Ground extends Actor
 {
-    /**
-     * Act - do whatever the platform wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void Ground()
-    {
-        getImage().scale(getImage().getWidth()*6, getImage().getHeight());
-    }
+    GreenfootImage platform = new GreenfootImage("images/brick.jpg");
+    
+    
     
     public void act()
     {
-        
+        platform.scale(50,50);
+        setImage(platform);
     }
 }

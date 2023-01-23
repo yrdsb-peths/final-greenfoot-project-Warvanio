@@ -7,21 +7,25 @@ public class Bullet extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     
+   
+    
 
     
     public void act() 
     {
-        
-        setLocation(getY(), getX() + 4);
+
+	
+        setLocation(getX() - 4, getY());
         
         
         //end game
         MyWorld world = (MyWorld) getWorld();
-        if(getX() >= world.getWidth())
+        if(getX() <= 0)
         {
             //world.gameOver();
+            world.increaseScore();
             world.removeObject(this);
-            ;
+            
         }
     }    
 }

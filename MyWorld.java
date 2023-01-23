@@ -10,11 +10,15 @@ public class MyWorld extends World
 {
     public int score = 0;
     Label scoreLabel;
+    
     //GreenfootSound dolphinSound = new GreenfootSound();
     /**
      * Constructor for objects of class MyWorld.
      * 
      */
+    SimpleTimer Timer = new SimpleTimer();
+    int spawnRate = 1;
+    boolean canSpawn = true;
     
     public MyWorld()
     {    
@@ -25,10 +29,25 @@ public class MyWorld extends World
         addObject(runner, 400, 700);
         
         //create label here
+  
+        
         scoreLabel = new Label(0, 80);
         addObject(scoreLabel, 30, 30);
-        createGround();
         createBullet();
+    }
+    
+    public void act()
+    {
+        if (canSpawn)
+	{
+	    createBullet();
+	    Timer.mark();
+	    canSpawn = false;
+	}
+	if (Timer.millisElapsed()/1000 >= spawnRate)
+	{
+	    canSpawn = true;
+	}
     }
     
     //game ends
@@ -51,15 +70,11 @@ public class MyWorld extends World
     public void createBullet()
     {
         Bullet bullet = new Bullet();
-        int x = 0;
-        int y = Greenfoot.getRandomNumber(600);
+        int x = getWidth() - 1;
+        int y = Greenfoot.getRandomNumber(900);
         addObject(bullet, x, y);
     }
     
-    public void createGround()
-    {
-        Ground ground = new Ground();
-        addObject(ground, 300, 300);
-    }
+
 }
 

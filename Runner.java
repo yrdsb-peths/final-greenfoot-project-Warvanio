@@ -24,11 +24,14 @@ public class Runner extends Actor
     int worldHeight;
     int worldWidth;
     
+    int floor;
+    
     public void  addedToWorld(World myWorld)
     {
         this.myWorld = myWorld;
         this.worldHeight = myWorld.getHeight();
         this.worldWidth = myWorld.getWidth();
+        floor = getY();
     }
     
     public void act() 
@@ -66,9 +69,20 @@ public class Runner extends Actor
         airTime = true;
     }
     
+    
+    
     private void fall()
     {
-        dY -= fallSpeed;
+        if (getY() >= floor)
+        {
+            setLocation(getX(), floor);
+            airTime = false;
+        } else
+        {
+            dY -= fallSpeed;
+        }
+       
+        
     }
     
     private void move()
