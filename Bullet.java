@@ -6,18 +6,22 @@ public class Bullet extends Actor
      * Act - do whatever the Bread wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    
+
+    
     public void act() 
     {
-        // Add your action code here.
-        setLocation(getX(), getY() + 4);
+        
+        setLocation(getY(), getX() + 4);
         
         
         //end game
         MyWorld world = (MyWorld) getWorld();
-        if(getY() >= world.getHeight())
+        if(getX() >= world.getWidth())
         {
-            world.gameOver();
+            //world.gameOver();
             world.removeObject(this);
+            ;
         }
     }    
 }
