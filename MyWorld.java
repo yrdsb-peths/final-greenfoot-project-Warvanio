@@ -11,7 +11,6 @@ public class MyWorld extends World
     public int score = 0;
     Label scoreLabel;
     
-    //GreenfootSound dolphinSound = new GreenfootSound();
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -22,15 +21,13 @@ public class MyWorld extends World
     
     public MyWorld()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(900, 900, 1, false);
         
         Runner runner = new Runner ();
         addObject(runner, 400, 700);
         
         //create label here
-  
-        
+               
         scoreLabel = new Label(0, 80);
         addObject(scoreLabel, 30, 30);
         createBullet();
@@ -39,22 +36,21 @@ public class MyWorld extends World
     public void act()
     {
         if (canSpawn)
-	{
-	    createBullet();
-	    Timer.mark();
-	    canSpawn = false;
-	}
-	if (Timer.millisElapsed()/1000 >= spawnRate)
-	{
-	    canSpawn = true;
-	}
+    {
+        createBullet();
+        Timer.mark();
+        canSpawn = false;
+    }
+    if (Timer.millisElapsed()/1000 >= spawnRate)
+    {
+        canSpawn = true;
+    }
     }
     
     //game ends
     
     public void gameOver()
     {
-        //dolphinSound.play();
         Label gameOverLabel = new Label("game over", 100);
         addObject(gameOverLabel, 400, 400);
     }

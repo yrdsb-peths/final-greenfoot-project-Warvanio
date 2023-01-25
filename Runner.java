@@ -36,17 +36,28 @@ public class Runner extends Actor
     
     public void act() 
     {
-        // Add your action code here.
+        if(Greenfoot.isKeyDown("up"))
+        {
+            setLocation(getX(), getY() - 5);
+        }
+        else if(Greenfoot.isKeyDown("down"))
+        {
+            setLocation(getX(), getY() + 5);
+        }
+        else if(Greenfoot.isKeyDown("left"))
+        {
+            move(-5);
+        }
+        else if(Greenfoot.isKeyDown("right"))
+        {
+            move(5);
+        }
         
-        if(airTime)
+        else
         {
-            fall();
+            stop();
         }
-        else 
-        {
-            getCommand();
-        }
-        move();
+        checkT();
     }
     
     
@@ -92,36 +103,14 @@ public class Runner extends Actor
         setLocation((int)newX, (int)newY);
     }
     
-    private void getCommand()
-    {
-        if(Greenfoot.isKeyDown("left"))
-        {
-            run("left");
-        }
-        else if (Greenfoot.isKeyDown("right"))
-        {
-            run("right");
-        }
-        else
-        {
-            stop();
-        }
-        
-        if(Greenfoot.isKeyDown("up"))
-        {
-            jump();
-        }
-        
-    }
-    //eats apple spawns new one
-    public void eat()
+    
+    public void checkT()
     {
         if(isTouching(Bullet.class))
         {
             removeTouching(Bullet.class);
             MyWorld world = (MyWorld) getWorld();
-            world.createBullet();
-            world.increaseScore();
+            world.gameOver();
         }
     }
 }

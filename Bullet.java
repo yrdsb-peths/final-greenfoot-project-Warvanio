@@ -14,7 +14,7 @@ public class Bullet extends Actor
     public void act() 
     {
 
-	
+    
         setLocation(getX() - 4, getY());
         
         
@@ -22,10 +22,8 @@ public class Bullet extends Actor
         MyWorld world = (MyWorld) getWorld();
         if(getX() <= 0)
         {
-            //world.gameOver();
             world.increaseScore();
             world.removeObject(this);
-            
         }
     }    
 }
